@@ -3,14 +3,13 @@ package com.baltictalents.Blog.controllers;
 import com.baltictalents.Blog.entities.Post;
 import com.baltictalents.Blog.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
 public class BlogController {
 
     @Autowired
@@ -21,8 +20,15 @@ public class BlogController {
         return postService.getAllPosts();
     }
 
+    @GetMapping("post/{id}")
+    public Optional<Post> getPost(@PathVariable Integer id){ return postService.getPost(id); }
+
     @PostMapping("/post")
     public void writePost(@RequestBody Post post){
         postService.writePost(post);
     }
+
+
+
+
 }
