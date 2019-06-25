@@ -2,6 +2,7 @@ package com.baltictalents.Blog.entities;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -17,9 +18,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String article;
-    @CreationTimestamp
-    private Timestamp date;
+    @CreatedDate
+    private LocalDateTime date;
 
 
     public Integer getId() {
@@ -46,11 +48,11 @@ public class Post {
         this.article = article;
     }
 
-    public Timestamp getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }
