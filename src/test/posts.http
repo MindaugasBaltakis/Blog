@@ -5,16 +5,31 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
+### get all posts
+
 GET http://localhost:8080/api/posts
 Content-Type: application/json
 
+### login
 
-###
+POST http://localhost:8080/login
+Content-Type: application/x-www-form-urlencoded
+
+username=Jonas&password=labas
+
+### create post
 
 POST http://localhost:8080/api/post
 Content-Type: application/json
-Cookie: JSESSIONID=DAB3EA1B05D762E4D5E562C1BC5AF987
+Cookie: JSESSIONID=882408E97C1D01B0FDF3D979329F5A51
 
 {"title": "testas", "article": "testas"}
+
+
+### delete post
+
+DELETE http://localhost:8080/api/post/4
+Content-Type: application/json
+Cookie: JSESSIONID=20AF4ADEF62B62B3FD917F4A4F355292
 
 ###

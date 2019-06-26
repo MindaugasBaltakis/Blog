@@ -29,13 +29,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                //autorizacija ir autentifikacija
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/public/**", "/api/posts").permitAll()
                 .anyRequest().authenticated()
                 .and()
+
+                //login nustatymai
                 .formLogin().permitAll()
+                .defaultSuccessUrl("/user.html", true)
                 .and()
-                .logout().permitAll();
+
+                //logout nustatymai
+                .logout().permitAll()
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/");
 
     }
 
