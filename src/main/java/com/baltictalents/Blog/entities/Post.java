@@ -1,5 +1,6 @@
 package com.baltictalents.Blog.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -23,6 +24,9 @@ public class Post {
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime date;
+    @ManyToOne
+    @JoinColumn(name = "author")
+    private User author;
 
 
     public Integer getId() {
@@ -55,5 +59,13 @@ public class Post {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User user) {
+        this.author = user;
     }
 }

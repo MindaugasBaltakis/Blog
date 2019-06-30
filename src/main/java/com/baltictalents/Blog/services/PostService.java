@@ -3,6 +3,7 @@ package com.baltictalents.Blog.services;
 import com.baltictalents.Blog.entities.Post;
 import com.baltictalents.Blog.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,11 @@ public class PostService {
     }
 
     public List<Post> getAllPosts(){
-        return postRepository.findAll();
+        return postRepository.findAll(Sort.by(Sort.Direction.DESC, "date"));
+    }
+
+    public List<Post> getAllUserPosts(String username){
+        return postRepository.findAllByAuthor_UsernameOrderByDateDesc(username);
     }
 
     public Optional<Post> getPost(Integer id){

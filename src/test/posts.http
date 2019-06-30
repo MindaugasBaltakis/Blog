@@ -5,7 +5,7 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-### get all posts
+### gauti visus postus is DB
 
 GET http://localhost:8080/api/posts
 Content-Type: application/json
@@ -17,19 +17,25 @@ Content-Type: application/x-www-form-urlencoded
 
 username=Jonas&password=labas
 
-### create post
+### gauti visus prisiloginusio userio postus
+
+GET http://localhost:8080/api/user/posts
+Content-Type: application/json
+Cookie: JSESSIONID=FF26F46DBE11F028060190C01CE66CBA
+
+### sukurti posta (gali tik prisilogines user ir kaip autorius jis bus pridetas serveryje patikrinus jo principal name)
 
 POST http://localhost:8080/api/post
 Content-Type: application/json
-Cookie: JSESSIONID=882408E97C1D01B0FDF3D979329F5A51
+Cookie: JSESSIONID=8AA6035C3509B2FF7391A36C9F1C963E
 
 {"title": "testas", "article": "testas"}
 
 
-### delete post
+### delete post (gali tik prisilogines user ir pries delete bus patikrinta ar jis yra posto autorius)
 
-DELETE http://localhost:8080/api/post/4
+DELETE http://localhost:8080/api/post/3
 Content-Type: application/json
-Cookie: JSESSIONID=20AF4ADEF62B62B3FD917F4A4F355292
+Cookie: JSESSIONID=E6F32F4E85B0618248D4E28FCE274022
 
 ###

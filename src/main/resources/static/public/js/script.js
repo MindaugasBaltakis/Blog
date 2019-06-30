@@ -13,7 +13,7 @@ function loadPosts() {
             `<div class="inner">
                 <div class="section">
                     <div class="container">
-                        <div class="date">${x.date}</div>
+                        <div class="date">${x.date} by ${x.author.username}</div>
                         <h2 class="title">${x.title}</h2>
                         <p>${x.article}</p>
                     </div>
